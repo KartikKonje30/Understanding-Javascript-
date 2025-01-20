@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>SetInterval</title>
+    </head>
+    <body>
+        <div>
+            <h1 id="heading">Learning setInterval</h1>
+            <h3 id="date">Time</h3>
+            <button class="start">Start</button>
+            <button class="stop">Stop</button>
+        </div>
+    </body>
+    <script>
+
+        let displayTime = () => {
+            let date = Date(Date.now());
+            let d = date.toString();
+            document.getElementById('date').innerHTML = `Time: ${d}`;
+        }
+
+        document.querySelector(".start").addEventListener('click',() => {
+            
+            let changeText =  setInterval(displayTime, 1000);
+
+            document.querySelector('.stop').addEventListener('click', () => {
+            clearInterval(changeText);
+            console.log("Event Stopped !");
+            })
+        })
+
+
+    </script>
+</html>

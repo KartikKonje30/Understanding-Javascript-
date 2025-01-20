@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>SetTimeout</title>
+    </head>
+    <body>
+        <div>
+            <h1 id="heading">Learning setInterval and setTimeout</h1>
+            <button class="btn">Stop</button>
+        </div>
+    </body>
+    <script>
+        let changeh1 = () => {
+            document.getElementById('heading').innerHTML += " from chai aur code !";}
+
+        let changeText = setTimeout(changeh1, 3000);
+
+        document.querySelector('.btn').addEventListener('click', () => {
+            clearTimeout(changeText);
+            console.log("Event Stopped !");
+        })
+
+    </script>
+</html>

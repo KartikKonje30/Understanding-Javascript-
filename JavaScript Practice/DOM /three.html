@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding NodeList & creation of element | chai aur code</title>
+</head>
+<body style="background-color: rgb(46, 46, 46); color: #fff">
+    
+</body>
+<script>
+    const div = document.createElement('div');
+    // console.log(div.childNodes);
+    div.className = "main"; // adding properties to the element
+    div.id = Math.round(Math.random() * 10 + 1);
+    div.style.backgroundColor = "lightblue";
+    div.style.color = "black";
+    div.style.fontWeight = "bold";
+    div.style.padding = "20px";
+
+    // One way of adding text to the div node using innerhtml
+    // div.innerHTML = "Creation of Node using innerHTML";
+
+    div.setAttribute('name', 'First Div'); // adding attributes to the element
+
+    // creating of textnode and then appending it to the div parent element
+    const textnode = document.createTextNode('Creation of Node using createTextNode');
+    div.appendChild(textnode);
+
+    // creating an element and then appending to the parent div element
+    const addSpace = document.createElement('comment');
+    addSpace.innerHTML = "This is a comment";
+    div.appendChild(addSpace);
+    const addSpan = document.createElement('span');
+    addSpan.innerHTML = "New span created";
+    div.appendChild(addSpan);
+
+    document.body.appendChild(div); // adding created node in the DOM
+
+
+
+</script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Events in JS</title>
+</head>
+<body style="background-color: #212121; color: white">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // addEventListener is the best approach for adding any event listener to the element
+    // Direct addition of the onClick() to any element in JS is not an ideal way
+   
+    // Adding event listeners using the addEventListener method in JavaScript is considered a better approach 
+    // because it provides greater flexibility and control over event handling compared to traditional methods like directly assigning event handlers to HTML elements, 
+    // allowing you to attach multiple event handlers to a single element, manage event propagation, and easily remove listeners when needed. 
+    
+    // Key advantages of using addEventListener:
+    
+    // Multiple event handlers:
+    // You can add multiple functions to listen for the same event on a single element, which is not possible with inline event handlers. 
+    
+    // Event propagation control:
+    // addEventListener allows you to specify whether you want to capture an event during its propagation phase or only when it bubbles up to the element, giving you finer-grained control over how events are handled. 
+    // Also bubbling which is also known as event propogation goes from bottom to the top level element.
+    // Example given below in this code; 
+    // Or if you want to catch any event and disable bubbling and handle event propogation can be simply done by adding third parameter to the addEventListener
+    // which is byDefault set to false i.e. bubbling and when set true i.e. catching the event
+
+    // Event Bubbling
+    // Event travels from the target element to the global window object
+    // It will handle first the innermost element, then the outermost element
+    // used for event delegation 
+
+    // Event Capturing
+    // Event travels from root element to the target element
+    // It will first handle the outermost element, then the target element
+    // used for intercepting events before they reach their target
+
+    // Event Propogation
+    // when using addEventListener() we use the third parameter to toggle between bubbling and capturing
+    // Bydefault is set to false i.e. to bubbling
+    // set to true, if you want to capture any event 
+
+    // You can also stop the event propogation by stopping it on certain element
+    // using event.stopPropogation() method in JS
+    // It won't allow the bubbling from child element to the parent element
+    // It can be called during in caturing phase to stop both capturing and bubbling.
+    
+    // Code separation:
+    // Keeps JavaScript logic separate from HTML, improving code readability and maintainability. 
+    
+    // Dynamic event handling:
+    // You can add or remove event listeners dynamically based on conditions in your application. 
+    
+    // Cross-browser compatibility:
+    // addEventListener is widely supported across all modern browsers. 
+    
+    // Comparison with older methods:
+    // onclick attribute: Directly assigning an event handler in HTML using onclick only allows a single function per element, limiting flexibility. 
+
+    // Some of the listener events to be focused upon are
+    // type, timeStamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlKey, shiftKey, keyCode
+
+    // document.getElementById('images').addEventListener('click',(e) => {
+    //     console.log("clicked inside the Ul element")
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click',(e) => {
+    //     console.log("clicked on Owl element")
+    // }, false)
+    
+    // here event bubbling is happening bydefault because of which clicked on Owl is appearing before and afterwards moved to the Ul element
+
+    // document.getElementById('owl').addEventListener('click',(e) => {
+    //     console.log("clicked on Owl element")
+    //     e.stopPropagation()
+    // }, false)
+
+    // you can also use event.stopPropagation() to stop bubbling and end it right after the target event 
+
+    document.getElementById('google').addEventListener('click',(e) => {
+        e.preventDefault();
+    }, false)
+
+    document.querySelector('#images').addEventListener('click',(e) => {
+
+        if(e.target.nodeName === 'IMG' || e.target.nodeName === 'A' ){
+            let removeElem = e.target.parentNode;
+            removeElem.remove();
+        }
+
+    }, false)
+
+
+</script>
+</html>

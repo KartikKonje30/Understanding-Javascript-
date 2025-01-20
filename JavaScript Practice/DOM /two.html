@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practise | chai aur code</title>
+</head>
+<body style="background-color: rgb(61, 60, 60); color: white">
+    <div class="parent" > 
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <!-- This is a comment -->
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    let parent = document.querySelector('.parent');
+    // console.log(parent);
+    // console.log(parent.children); //Returns the children in an HTML collection
+    // console.log(parent.children[0]); //Returns the indexed children node
+
+    for(let i=0; i<parent.children.length; i++){
+        console.log(parent.children[i].innerHTML);
+    }
+
+    // console.log(parent.firstElementChild); // Returns first child element from the parent node
+    // console.log(parent.lastElementChild); // Returns last child element from the parent node
+
+    let dayOne = document.querySelector('.day');
+    // console.log(dayOne.parentElement); // Get parent element from child element
+    // console.log(dayOne.nextElementSibling); // Get nest sibling element from the selected one
+
+    console.log("Nodes :", parent.childNodes); // Returns a NodeList containing all the child notes from the DOM tree
+    
+
+</script>
+</html>

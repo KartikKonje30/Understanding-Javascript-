@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Color</title>  
+  </head>
+  <body>
+    <div style="margin: 8rem; place-items: center; ">
+        <h1 style="text-align: center;">"Click" to change the color of the page</h1>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem ">
+            <button id="#4C4C4C" style="background-color: rgb(76, 76, 76); border: 2px solid black; width: 100px; height: 100px; cursor: pointer;"></button>
+            <button id="#E98C8C" style="background-color: rgb(233, 140, 140); border: 2px solid black; width: 100px; height: 100px; cursor: pointer;"></button>
+            <button id="#1570FA" style="background-color: rgb(19, 112, 250); border: 2px solid black; width: 100px; height: 100px; cursor: pointer;"></button>
+            <button id="#8F13E2" style="background-color: rgb(143, 19, 226); border: 2px solid black; width: 100px; height: 100px; cursor: pointer;"></button>
+        </div>
+        <button id="#FFF" style="background-color: white; border: 1px solid rgb(0, 0, 0); border-radius: 1rem ; width: 80px; height: 40px; cursor: pointer; margin: 2rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); user-select: none;">Reset</button>
+    </div>
+  </body>
+  <script>
+    const buttons = document.querySelectorAll('button');
+    // console.log(buttons);
+    const body = document.querySelector('body');
+
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function(e){
+            if(e.target.id === "#4C4C4C" || e.target.id === "#8F13E2"){
+                document.querySelector('h1').style.color = "white"
+            }else{
+                document.querySelector('h1').style.color = "black"
+            }
+            body.style.backgroundColor = e.target.id;
+        });
+    });
+
+  </script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code | Add or remove element DOM</title>
+</head>
+<body style="background-color: #212121; color: white">
+    <div>
+        <ul class="language">
+            <li>Javascript</li>
+        </ul>
+    </div>
+</body>
+<script>
+    //Brute Force
+    function addListItem(langName){
+        const li = document.createElement('li');
+        li.innerHTML = langName;
+        document.querySelector('.language').appendChild(li);
+    }
+
+    let langArray = ['Java', 'C', 'C++']
+    for(let i=0; i<langArray.length; i++){
+        addListItem(langArray[i]);
+    }
+    // But when using innerHTML DOM needs to traverse through the entire tree to get to the specific node
+    // So we use an optimise approach
+
+    function addListItemOptimised(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addListItemOptimised('TypeScript');
+    addListItemOptimised('Golang');
+
+
+    // Edit
+    const secondLang = document.querySelector('li:nth-child(2)');
+    // console.log(secondLang)
+    // secondLang.innerHTML = "Java" + " //edited"
+
+    const newLi = document.createElement('li');
+    newLi.textContent = "Java  //edited";
+    secondLang.replaceWith(newLi)
+
+    let firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>Javascript //edited 2</li>'
+
+    //Remove
+    document.querySelector('li:last-child').remove();
+
+</script>
+</html>
