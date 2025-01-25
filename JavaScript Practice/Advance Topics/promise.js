@@ -47,7 +47,7 @@ promiseThree.then((user) => {
 let promiseFour = new Promise((resolve, reject) => {
     
     setTimeout(() => {
-        let error = true;
+        let error = false;
         if(!error){
             console.log('Promised task 4 !');
             resolve();
@@ -70,4 +70,56 @@ promiseFour.then( () => {
 
 // 5th
 
+let promiseFive = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let error = false;
+        if(!error){
+            // console.log('Promised task 5 !');
+            resolve('Promised task 5 !');
+        }
+        else{
+            reject('Error: something went wrong');
+        }
+    }, 1000)
+})
+
+async function consumePromiseFive(){
+    try{
+        let response = await promiseFive;
+        console.log(response);
+    }
+    catch(e){
+        console.log(e);
+    }
+    
+}
+consumePromiseFive()
+
+// 6th 
+// using fetch and with async await;
+
+const url = 'https://api.github.com/users/KartikKonje30';
+
+async function getInfo(url){
+    try{
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+getInfo('https://api.restful-api.dev/objects/4')
+
+// OR
+// using fetch and with .then and .catch;
+
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(function (res){
+    return res.json();
+})
+.then((data) => console.log(data))
+.catch((error) => console.log(error))
 
