@@ -92,18 +92,17 @@
 
     // you can also use event.stopPropagation() to stop bubbling and end it right after the target event 
 
-    document.getElementById('google').addEventListener('click',(e) => {
-        e.preventDefault();
-    }, false)
+    // document.getElementById('google').addEventListener('click',(e) => {
+    //     e.preventDefault();
+    // }, false)
 
-    document.querySelector('#images').addEventListener('click',(e) => {
+    // document.querySelector('#images').addEventListener('click',(e) => {
 
-        if(e.target.nodeName === 'IMG' || e.target.nodeName === 'A' ){
-            let removeElem = e.target.parentNode;
-            removeElem.remove();
-        }
-
-    }, false)
+    //     if(e.target.nodeName === 'IMG' || e.target.nodeName === 'A' ){
+    //         let removeElem = e.target.parentNode;
+    //         removeElem.remove();
+    //     }
+    // }, false)
 
 
 </script>
