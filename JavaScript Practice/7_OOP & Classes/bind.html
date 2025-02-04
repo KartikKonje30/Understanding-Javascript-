@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind in React</title>
+</head>
+<body>
+    <div>
+        <button>Button Clicked !</button>
+    </div>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library = 'React';
+            this.server = 'http://localhost:3000'
+
+            // With the bind() method, an object can borrow a method from another object.
+            // without bind one object cannot access the properties of another object
+
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this));
+
+            // can also be done in the way shown below
+
+            // document.querySelector('button').addEventListener('click',function(e){
+            //     console.log('Button Clicked!');
+            //     console.log(this.server);
+            // }.bind(this));
+        }
+
+        handleClick(){
+            console.log('Button Clicked!');
+            console.log(this.server);
+        }
+    }
+
+    const test = new React();
+
+</script>
+</html>
