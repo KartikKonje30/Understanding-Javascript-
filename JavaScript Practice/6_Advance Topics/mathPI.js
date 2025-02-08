@@ -1,5 +1,5 @@
 
-// Question
+// Question on Property Descriptors
 
 // I want to change the Math.PI value to another value
 // Can you change it to 5
