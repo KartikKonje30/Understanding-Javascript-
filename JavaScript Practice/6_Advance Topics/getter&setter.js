@@ -2,51 +2,51 @@
 // Getter and setter w.r.t. Classes
 // With classes we use constructor and we use methods for get and set of the property
 
-// class User {
-//     constructor(username,password){
-//         this.username = username 
-//         this.password = password
-//     }
+class UserClass {
+    constructor(username,password){
+        this.username = username 
+        this.password = password
+    }
 
-//     get password(){
-//         return `${this._password}Kartik`
-//     }
+    get password(){
+        return `${this._password}Kartik`
+    }
 
-//     set password(value){
-//         this._password = value
-//     }
-// }
+    set password(value){
+        this._password = value
+    }
+}
 
 
 // Getter setter w.r.t. Function
 // with Functions we use Object.defineProperty to define get and set as functions in an Object
 
-// function User(username, password){
-//     this._username = username;
-//     this._password = password;
+function UserFunction(username, password){
+    this._username = username;
+    this._password = password;
 
-//     Object.defineProperty(this, 'username', {
-//         get: function(){
-//             return this._username.toUpperCase() 
-//         },
-//         set: function(value){
-//             this._username = value
-//         }
-//     })
+    Object.defineProperty(this, 'username', {
+        get: function(){
+            return this._username.toUpperCase() 
+        },
+        set: function(value){
+            this._username = value
+        }
+    })
 
-//     Object.defineProperty(this, 'password', {
-//         get: function(){
-//             return this._password.toUpperCase() + "encrypt"
-//         },
-//         set: function(value){
-//             this._password = value
-//         }
-//     })
-// }
+    Object.defineProperty(this, 'password', {
+        get: function(){
+            return this._password.toUpperCase() + "encrypt"
+        },
+        set: function(value){
+            this._password = value
+        }
+    })
+}
 
 // Getter setter w.r.t. Object
 
-const User = {
+const UserObject = {
 
     _username: 'Kartik',
     _password: 'abc123',
@@ -71,7 +71,7 @@ const User = {
 
 // const user1 = new User('Kartik','abc123');
 
-const user1 = Object.create(User)
+// const user1 = Object.create(User)
 
-console.log(user1.username);
-console.log(user1.password);
+// console.log(user1.username);
+// console.log(user1.password);

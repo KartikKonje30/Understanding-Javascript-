@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Scoping and Closure</title>
+</head>
+<body style="background-color: #212121">
+    <div>
+        <button id="orange">Orange</button>
+        <button id="lavender">Lavender</button>
+
+    </div>
+</body>
+<script>
+
+    // Lexical Scope : 
+    // Whenever there exist a function inside another function 
+    // The inner function is inside the execution context of the outer scope
+    // As javascript allots same memory for the inner function as well
+    // Because of which inner function can access all the values from the outer function, But not vise versa 
+    // This is a Lexical Scope
+    // example :
+
+    // function init(){
+    //     let name = 'Kartik';
+    //     function displayName(){
+    //         console.log(name);
+    //     }
+    //     displayName()
+    // }
+    // init()
+
+    // Closure:
+    // Say for example if the inner function is accessing the values of the outer function
+    // And that function is passed as a reference to a variable outside the outer function scope
+    // will this work ??
+    // To answer this problem javascript introduced closure whenever such condition occurs
+    // JS along with its function reference it also sends the entire lexical scope of that function
+    // so it has access to the values as it is dependent on values of that outer function
+    // This is closure
+    // example:
+
+    // function init2(){
+    //     let name = 'Kartik';
+    //     function displayName2(){
+    //         console.log(name);
+    //     }
+    //     return displayName2
+    // }
+
+    // const nameDisplay = init2();
+    // nameDisplay()
+
+    // Real Life scenarion with an example
+
+    // document.getElementById('orange').onclick = function(){
+    //     document.body.style.backgroundColor = 'orange'
+    // }
+
+    // document.getElementById('lavender').onclick = function(){
+    //     document.body.style.backgroundColor = '#D2D3FF'
+    // }
+
+    // writing the above for two buttons is easy but say for 500 buttons is quite time expensive
+
+    // By using DIS -> Do It Simple technique 
+    // One would simple create a function setting bg to color and sending of that function to the onclick method of that button
+
+    function setBackground(color){
+
+        // document.body.style.backgroundColor = color;
+ 
+        function setColor (){
+            document.body.style.backgroundColor = color;
+        }
+        return setColor
+    }
+
+    document.getElementById('orange').onclick = setBackground('orange')
+    document.getElementById('lavender').onclick = setBackground('#D2D3FF')
+
+    // as you can see what we did was returned a inner function, along with which the lexical scope of that function was also passed 
+    // because onclick requires an executable function and when we were directly setting the bgcolor it was not working with onclick it was directly applying the color
+
+
+</script>
+</html>
