@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local & Session Storage </title>
+</head>
+<body>
+    <div>
+        <h1>Hello World!</h1>
+    </div>
+</body>
+<script>
+
+    // Local Storage
+    // It is a storage mechanism for browser ensuring persistant data storage
+    // meaning data will not get lost on page reload 
+    // and will save across multiple tabs
+
+    // Methods of localStorage
+    
+    // 1. setItem
+    // localStorage.setItem(key, value)
+    // used to store items in a key value pair
+    
+    // 2. getItem
+    // localStorage.getItem(key)
+    // returns the value of the specific key 
+
+    // 3. removeItem
+    // localStorage.removeItem(key)
+    // removes the key item
+
+    // 4. clear
+    // localStorage.clear()
+    // will remove all the entries in localStorage and clear it
+
+    // 5. getKey
+    // localStorage.getKey(index)
+    // will return the key on specific index
+
+    // 6. length
+    // localStorage.length
+    // will return the length of the localStorage
+
+    // we can get and set values just like an object
+    // localStorage.one = 1
+    // alert(localStorage.one)
+    // delete localStorage.one
+
+    // Imp's
+    // Both key and value must be string
+    // we can use two JSON methods to store objects in localStorage
+    // JSON.Stringify(object) -> converts object to JSON string
+    // JSON.parse(string) -> converts string to object
+
+    let key = prompt('Enter key:');
+    let value = prompt('Enter value:');
+
+    localStorage.setItem(key, value);
+
+    console.log(`${key}: ${value}`);
+
+    let testObject = {
+        'name': 'user',
+        'password': 'admin123'
+    }
+
+    localStorage.setItem('object1', JSON.stringify(testObject))
+    localStorage.setItem('object2', '{"name": "user2", "password": "admin1234"}')
+
+    
+    // Session Storage
+
+    // same as localStorage but the data is only persistant on a single page/tab
+    // across multiple tabs it will not remain same
+    // as it stores data for only one perticular session
+    // methods and usage similar to local storage
+
+    // Storage Event
+    // works for both session as well as local Storage
+    // Lets you alert on multiple tabs that a data values has been updated or changed
+    // syntax: alert(localStorage.onStorage())
+
+    window.onstorage = (e) => {
+        alert('value changed!')
+        console.log(e);
+    }
+
+
+</script>
+</html>
